@@ -1,26 +1,64 @@
-n = int(input())
+#n, m 공백 구분해서 일력받기 
+n, m = map(int, input().split())
 
-x, y = 1, 1
-plans = input().split()
+# 방문한 위치 저장을 위한 맵 생성 후 0 으로 초기화 
+d = [[0] * m for _ in range(n)]
+print(d)
 
-#L R U D 이동
-dx = [0, 0, -1, 1]
-dy = [-1, -1, 0, 0]
-move_types = ['L', 'R', 'U', 'D']
+#현재 캐릭터의 x , y좌표 방향 입력받기 
+x, y, direction = map(int, input().split())
+d[x][y] = 1 #현재 좌표 방문처리 
 
-#이동 계획 확인 
-for plan in plans:
-  # 이동 후 좌표 구하기
-  for i in range(len(move_types)):
-    if plan == move_types[i]:
-      nx = x + dx[i]
-      ny = y + dy[i]
-  
-  # 공간을 벗어나는 경우 무시 
-  if nx < 1 or ny < 1 or nx > n or ny > n:
-    continue 
-  
-  # 이동 수행
-  x, y = nx, ny
+# 전체 맵정보 입력받기 
+array = []
+for i in range(n):
+  array.append(list(map(int, input().split())))
 
-print(x, y)
+print(array)
+# 북 동 남 서 방향 정의
+dx = [-1, 0, 1, 0]
+dy = [0 , 1, 0, -1]
+
+# 왼쪽으로 회전
+def turn_left():
+  global direction
+  direction -= 1
+  if direction == -1:
+    direction = 3
+
+# 시물레이션 시작
+count = 1
+turn_time = 0
+while True:
+  #왼쪽으로 회전
+  turn_left()
+  nx = x + dx[direction]
+  ny = y + dy[direction]
+
+  #회전 이후 정면에 가보지 않은 칸이 존재하는 경우 이동
+  if d[nx][ny] == 0 and array[nx][ny] == 0:
+    d[nx][ny] = 1
+    x = nx
+    y = ny
+    count += 1
+    turn_time = 0
+    continue
+  # 회전 이후 정면에 가보지 않은 칸이 없거나 바다인 경우 
+  else:
+    turn_time += 1
+  # 네 방향 모두 갈 수 없는 경우 
+  if turn_time == 4:
+    nx = x - dx[direction]
+    ny = y - dx[direction]
+
+    #뒤로 갈 수 있다면 이동
+    if array[nx][ny] == 0:
+      x = nx
+      y = ny
+    
+    # 뒤로 바다가 막혀있는 경우
+    else:
+      break
+    turn_time = 0
+
+print(count)
