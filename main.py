@@ -12,7 +12,7 @@ d[x][y] = 1 #현재 좌표 방문처리
 # 전체 맵정보 입력받기 
 array = []
 for i in range(n):
-  array.append(list(map(int, input().split())))
+  array.append(list(map(int, in  put().split())))
 
 print(array)
 # 북 동 남 서 방향 정의
