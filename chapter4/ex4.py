@@ -6,7 +6,7 @@ d = [[0] * m for _ in range(n)]
 print(d)
 
 #현재 캐릭터의 x , y좌표 방향 입력받기 
-x, y, direction = map(int, input().split())
+x, y, direction =  map(int, input().split())
 d[x][y] = 1 #현재 좌표 방문처리 
 
 # 전체 맵정보 입력받기 
