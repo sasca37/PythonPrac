@@ -2,7 +2,7 @@
 n, m = map(int, input().split())
 
 # 방문한 위치 저장을 위한 맵 생성 후 0 으로 초기화 
-d = [[0] *   m   for _ in range(n)]
+d = [[0] *   m   for _ in   range(n)]
 print(d)
 
 #현재 캐릭터의 x , y좌표 방향 입력받기 
