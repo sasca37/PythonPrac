@@ -13,7 +13,7 @@ for plan in plans:
   # 이동 후 좌표 구하기
   for i in range(len(move_types)):
     if plan == move_types[i]:
-      nx = x + dx[i]
+      nx = x +  +dx[i]
       ny = y + dy[i]
   
   # 공간을 벗어나는 경우 무시 
