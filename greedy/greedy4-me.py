@@ -1,19 +1,21 @@
-n, k = map(int, input().split())
+n,k = map(int, input().split())
 
-count = n % k 
-result = 0 
-result += count
+count = 0
 
 while True:
-  if (n == 1) :
+  if (n == 1):
     break
 
-  if(n < k):
-    result = n-1
-    break
-  
+  elif((n % k) != 0):
+    while ((n%k)!=0):
+      n -= 1 
+      count += 1
+      if(n == 1):
+        break
   else :
-    n /= k 
-    result +=1
+    while (n!=1):
+      n /= k
+      count += 1 
+      break
 
-print(result)
+print(count)
