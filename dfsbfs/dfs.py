@@ -1,4 +1,5 @@
 #DFS 메서드 정의 : 스택으로 처리 
+#Depth First Search 
 
 def dfs(graph, v, visited):
   # 현재 노드를 방문 처리
