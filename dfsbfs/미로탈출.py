@@ -1,4 +1,5 @@
 from collections import deque
+
 n,m = map(int, input().split())
 graph = []
 for i in range(n):
@@ -10,11 +11,9 @@ dy = [0, 0, -1, 1]
 def bfs(x,y):
   queue = deque()
   queue.append((x,y))
-  print(queue)
-  #큐가 빌때까지 
+
   while queue:
     x,y = queue.popleft()
-    print('popleft', queue)
     for i in range(4):
       nx = x + dx[i]
       ny = y + dy[i]
